@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>MobilZone - Telefon Satışı</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f4fff8, #d7f2e3);
+            color: #145c2e;
+        }
+        header {
+            background-color: #1a662e;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        .flag {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            width: 40px;
+        }
+        .clock {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 16px;
+            color: #f4fff8;
+        }
+        nav {
+            background-color: #d3f0de;
+            padding: 15px;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #145c2e;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        section {
+            padding: 30px;
+        }
+        .product {
+            border: 2px solid #1a662e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            max-width: 700px;
+        }
+        footer {
+            background-color: #1a662e;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        input, button, select, textarea {
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            border: 1px solid #1a662e;
+            border-radius: 4px;
+        }
+        .message-box {
+            margin-top: 20px;
+            border: 1px dashed #1a662e;
+            padding: 10px;
+            background-color: #fff;
+            max-width: 500px;
+        }
+    </style>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const options = { timeZone: 'Asia/Baku', hour12: false };
+            const timeString = now.toLocaleTimeString('az-AZ', options);
+            document.getElementById('clock').innerText = "🕒 Bakı vaxtı ilə: " + timeString;
+        }
+
+        function confirmRegistration(event) {
+            event.preventDefault();
+            alert("Qeydiyyat tamamlandı!");
+        }
+
+        function submitMessage(event) {
+            event.preventDefault();
+            const msg = document.getElementById("msg").value;
+            if (msg.trim()) {
+                const display = document.getElementById("all-messages");
+                const entry = document.createElement("div");
+                entry.className = "message-box";
+                entry.innerText = msg;
+                display.prepend(entry);
+                document.getElementById("msg").value = "";
+            }
+        }
+
+        setInterval(updateClock, 1000);
+        window.onload = updateClock;
+    </script>
+</head>
+<body>
+    <header>
+        <div id="clock" class="clock">🕒 Bakı vaxtı ilə:</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Azerbaijan.svg" class="flag" alt="Azərbaycan Bayrağı">
+        <h1>MobilZone</h1>
+        <p>3 ildir sizin xidmətinizdəyik 📱</p>
+    </header>
+    <nav>
+        <a href="#biz">Biz Kimik</a>
+        <a href="#telefonlar">Telefonlar</a>
+        <a href="#qeydiyyat">Qeydiyyat</a>
+        <a href="#musteri">Müştəri Xidməti</a>
+        <a href="#mesaj">Mesaj Yaz</a>
+        <a href="#instagram">Instagram Qeydiyyatı</a>
+    </nav>
+    <section id="biz">
+        <h2>Biz Kimik</h2>
+        <p>
+            MobilZone, 2022-ci ildən bu yana minlərlə müştəriyə xidmət göstərmiş etibarlı bir mobil texnologiya platformasıdır.
+            Biz orijinal, zəmanətli və sərfəli telefonların satışı ilə məşğuluq. Lalafo və sosial media üzərindən onlayn sifariş imkanları təqdim edirik.
+            Hər müştərimizin razılığı bizim üçün önəmlidir. Satış sonrası xidmət, müştəri dəstəyi və çevik çatdırılma ilə fərqlənirik.
+        </p>
+    </section>
+    <section id="telefonlar">
+        <h2>Telefon Modelləri</h2>
+        <div class="product">
+            <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-15-pro-max-hero?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1693011162781" style="max-width:300px;">
+            <h3>iPhone 15 Pro Max</h3>
+            <p>A16 çip, 48MP kamera, USB-C dəstəyi ilə gələn premium model.</p>
+            <p>📲 Telegram: <a href="https://t.me/Mobilzone2">@Mobilzone2</a></p>
+        </div>
+        <!-- Əlavə modellər üçün eyni blokdan çoxaldıla bilər -->
+    </section>
+    <section id="qeydiyyat">
+        <h2>Qeydiyyat</h2>
+        <form onsubmit="confirmRegistration(event)">
+            <label for="name">Ad:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="surname">Soyad:</label>
+            <input type="text" id="surname" name="surname" required>
+            <button type="submit">Qeydiyyatdan keç</button>
+        </form>
+    </section>
+    <section id="musteri">
+        <h2>Müştəri Xidməti</h2>
+        <p>📸 Instagram: <a href="https://instagram.com/mobilzone.az">@mobilzone.az</a></p>
+        <p>💬 Telegram: <a href="https://t.me/Mobilzone2">@Mobilzone2</a></p>
+    </section>
+    <section id="mesaj">
+        <h2>Mesaj Yaz</h2>
+        <form onsubmit="submitMessage(event)">
+            <label for="msg">Mesajınız:</label>
+            <textarea id="msg" rows="4" placeholder="Fikrinizi yazın..."></textarea>
+            <button type="submit">Göndər</button>
+        </form>
+        <div id="all-messages">
+            <!-- Yazılmış mesajlar burada göstəriləcək -->
+        </div>
+    </section>
+    <section id="instagram">
+        <h2>Instagram Qeydiyyatı</h2>
+        <p>Instagram üzərindən qeydiyyatdan keçənlərə <strong>50₼ - 300₼</strong> arası endirim hədiyyə! 🎁</p>
+        <a href="https://instagram.com/mobilzone.az" target="_blank">
+            <button>Instagram ilə Qeydiyyat</button>
+        </a>
+    </section>
+    <footer>
+        <p>&copy; 2025 MobilZone. Bütün hüquqlar qorunur.</p>
+    </footer>
+</body>
+</html>
